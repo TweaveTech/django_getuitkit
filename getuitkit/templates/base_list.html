@@ -1,0 +1,66 @@
+{% extends "base_page.html" %}
+
+{% block title %}Base List{% endblock %}
+
+{% block content %}
+{% block content_header %}
+<div uk-grid>
+
+  <div class="uk-width-3-5">
+    <h1 class="uk-h1">{% block list_title %}{% endblock %}</h1>
+  </div>
+  <div class="uk-width-2-5">
+    <a href="{% block list_add_button_link %}{% endblock %}" class="uk-button uk-button-primary uk-align-right">
+      {% block list_add_button_content %}{% endblock %}
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+<hr>
+
+{% block content_filter %}
+    {% if filter.form.fields %}
+    <div uk-grid>
+        <div class="uk-width-1-4">
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle_filters"><i class="fa-solid fa-filter"></i> Show / Hide Filter</button>
+        </div>
+        <div class="uk-width-3-4">
+            <div id="toggle_filters" hidden>
+                <form method="get">
+                    <fieldset class="uk-fieldset">
+                    {{ filter.form.as_p }}
+                    </fieldset>
+                    <button class='uk-button uk-button-primary' type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% endif %}
+{% endblock %}
+
+{% block table %}
+<table  class="uk-table uk-table-striped uk-table-hover uk-table-justify">
+    <thead>
+        {% block thead %}{% endblock %}
+    </thead>
+    <tbody>
+        {% block tbody %}{% endblock %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+{% if is_paginated or page_obj.paginator.num_page > 1 %}
+<ul class="uk-pagination">
+  {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}"><span class="uk-margin-small-right" uk-pagination-previous></span> Previous</a></li>
+  {% endif %}
+  {% if page_obj.has_next %}
+    <li class="uk-margin-auto-left"><a href="?page={{ page_obj.next_page_number }}">Next <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
+  {% endif %}
+</ul>
+{% endif %}
+
+{% endblock %}

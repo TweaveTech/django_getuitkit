@@ -1,0 +1,28 @@
+{% comment %}
+              <li><a href="#">Accounts</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{% url 'company_list' %}">Companies</a></li>
+                        <li><a href="{% url 'contact_list' %}">Contacts</a></li>
+                    </ul>
+                </div>
+              </li>
+
+              <li><a href="#">Billing</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{% url 'consumable_list' %}">Consumables</a></li>
+                        <!-- <li><a href="{% url 'invoice_list' %}">Invoices</a></li> -->
+                        <li><a href="{% url 'subscription_list' %}">Subscriptions</a></li>
+                    </ul>
+                </div>
+              </li>
+              <li><a href="#">Actions</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{% url 'actionmanual_list' %}">Manual Actions</a></li>
+                        <li><a href="{% url 'actionsendemail_list' %}">Email approvals</a></li>
+                    </ul>
+                </div>
+              </li>
+{% end comment %}

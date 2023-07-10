@@ -1,0 +1,27 @@
+{% extends 'base_form.html' %}
+
+{% block important_header_scripts %}
+    {{ form.media.css }}
+        <style>
+        input, select {width: 100%}
+    </style>
+{% endblock %}
+
+{% block form %}
+<form autocomplete="off" method="post">{% csrf_token %}
+    <fieldset class="uk-fieldset">
+    <!-- {{ form.errors }} -->
+    <!-- {{ form.non_field_errors }} -->
+    {{ form.as_p }}
+    {% block inlineformblock %}{% endblock %}
+    </fieldset>
+    <button class="uk-button uk-button-primary" type="submit">
+    {% if object %}
+    Save {{ object }}
+    {% else %}
+    Create new entry
+    {% endif %}
+    </button>
+</form>
+{{ form.media.js }}
+{% endblock %}

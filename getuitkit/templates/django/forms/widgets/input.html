@@ -1,0 +1,1 @@
+<input class="uk-input uk-{{widget.type}} {% if widget.name == 'username' or widget.name == 'password' %}uk-form-large{% endif %}" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>

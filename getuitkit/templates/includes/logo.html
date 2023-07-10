@@ -1,0 +1,5 @@
+{% load static %}
+
+<a href="{% if reverse_url %}{% url reverse_url %}{% else %}/{% endif %}" class="uk-navbar-item uk-logo">
+    <img src="{% static 'img/logo_icon.png' %}" width="{{ width }}" alt="">
+</a>

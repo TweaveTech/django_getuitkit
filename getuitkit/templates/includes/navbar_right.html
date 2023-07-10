@@ -1,0 +1,25 @@
+{% comment %}
+            <li><a href="#"><i class="fa-solid fa-circle-plus fa-xl"></i></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{% url 'company_create' %}">Create Company</a></li>
+                        <li><a href="{% url 'contact_create' %}">Create contact</a></li>
+                        <li><a href="{% url 'consumable_create' %}">Create Consumable</a></li>
+                        <li><a href="{% url 'subscription_create' %}">Create Subscription</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="#"><i class="fa-solid fa-gear fa-xl"></i></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{% url 'billingcompany_list'%}">Billing Companies</a></li>
+                        <li><a href="{% url 'membership_list' %}">Memberships</a></li>
+                        <li><a href="{% url 'actionsequence_list' %}">Sequence List</a></li>
+                        <li><a href="{% url 'admin:topics_topic_changelist' %}">Topics</a></li>
+                        <li><a href="{% url 'admin:accounts_contactrole_changelist' %}">Roles</a></li>
+
+                    </ul>
+                </div>
+            </li>
+{% endcomment %}

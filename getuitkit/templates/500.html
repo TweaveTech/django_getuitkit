@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Something went wrong{% endblock %}
+
+{% block body %}
+<div id="content" class="row">
+  <div class="medium-7 medium-centered columns pad" style="text-align: center;">
+    <img src="{% static 'img/500.png' %}">
+  </div>
+</div>
+{% endblock %}

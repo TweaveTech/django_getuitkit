@@ -1,0 +1,42 @@
+{% extends 'base_page.html' %}
+
+{% block form_button_disable_scripts %}
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('form').submit( function(event) {
+            // disable to avoid double submission
+            $('.uk-button').attr('disabled', true);
+        });
+    });
+</script>
+
+{% endblock %}
+
+{% block content %}
+<h1 class='uk-h1'>{% block form_title %}{% endblock %}</h1>
+
+    {% block extra_body %}{% endblock %}
+
+    {% block form %}
+    <form method="post">{% csrf_token %}
+        <fieldset class="uk-fieldset">
+        <!-- {{ form.errors }} -->
+        <!-- {{ form.non_field_errors }} -->
+        {{ form.as_p }}
+        </fieldset>
+
+        {% block inlineformblock %}{% endblock %}
+
+        <button class="uk-button uk-button-primary" type="submit">
+        {% if object %}
+        Save {{ object }}
+        {% else %}
+        Create new entry
+        {% endif %}
+        </button>
+    </form>
+    {% endblock %}
+
+    {% block extra_post_form %}{% endblock %}
+
+{% endblock %}
