@@ -28,11 +28,13 @@
         {% block inlineformblock %}{% endblock %}
 
         <button class="uk-button uk-button-primary" type="submit">
-        {% if object %}
-        Save {{ object }}
-        {% else %}
-        Create new entry
-        {% endif %}
+        {% block submit_button %}
+            {% if object %}
+            Save {{ object }}
+            {% else %}
+            Create new entry
+            {% endif %}
+        {% endblock %}
         </button>
     </form>
     {% endblock %}
