@@ -3,8 +3,7 @@ A lightweight wrapper for getuitkit.com including some default views and templat
 
 Detailed documentation is in the "docs" directory. (TODO)
 
-Quick start
------------
+## Quick start
 
 1. Add "getuikit" to your INSTALLED_APPS setting like this::
 
@@ -30,8 +29,7 @@ Quick start
 5. Visit http://127.0.0.1:8000/polls/ to participate in the poll.
 
 
-Adjusting the top-menu
-----------------------
+## Adjusting the top-menu
 
 Create in one of your apps a path `templates/includes` and add the following file: `navbar_main.html` with content
 
@@ -47,8 +45,7 @@ Create in one of your apps a path `templates/includes` and add the following fil
 ```
 
 
-Adding extra css
-----------------
+## Adding extra css
 
 Add a file `local_css_overrides.css` in your templates root.
 And either find the overrides in the original css in the package or use these as a cheat-sheet to override the primary colour:
@@ -268,7 +265,9 @@ a.uk-link-heading:hover,
 }
 ```
 
-## Creating a ListView
+## Views
+
+### Creating a ListView
 
 1. Inherit `from getuikit.views import ListView`
 2. Create your template in the relevant folder.
@@ -320,7 +319,7 @@ a.uk-link-heading:hover,
 ```
 
 
-## Creating a DetailView
+### Creating a DetailView
 
 1. Inherit `from getuikit.views import DetailView`
 2. Create your template in the relevant folder.
@@ -329,6 +328,5 @@ a.uk-link-heading:hover,
 
 ```html
 {% extends "base_detail.html" %}
-
 
 ```
