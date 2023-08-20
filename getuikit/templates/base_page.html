@@ -6,7 +6,9 @@
         <div class="uk-navbar-left">
             {% include 'includes/logo.html' with width=75 reverse_url=dashboard %}
             <ul class="uk-navbar-nav">
+              {% block navbar_block %}
               {% include 'includes/navbar_main.html' %}
+              {% endblock %}
             </ul>
         </div>
         <div class="uk-navbar-right">
