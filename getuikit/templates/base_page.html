@@ -6,14 +6,16 @@
         <div class="uk-navbar-left">
             {% include 'includes/logo.html' with width=75 reverse_url=dashboard %}
             <ul class="uk-navbar-nav">
-              {% block navbar_block %}
+              {% block navbar_main %}
               {% include 'includes/navbar_main.html' %}
               {% endblock %}
             </ul>
         </div>
         <div class="uk-navbar-right">
           <ul class="uk-navbar-nav">
+            {% block navbar_right %}
             {% include 'includes/navbar_right.html' %}
+            {% endblock %}
             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-power-off fa-xl"></i></a></li>
           </ul>
         </div>
