@@ -2,7 +2,7 @@ from django.views import generic
 
 
 class ListView(generic.ListView):
-    pass
+    paginate_by = 50
 
 
 class DetailView(generic.DetailView):
