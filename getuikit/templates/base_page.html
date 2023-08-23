@@ -24,8 +24,8 @@
     {% if messages %}
     <div>
       {% for message in messages %}
-      <div class="uk-alert-{{ message.tags }} callout" uk-alert>
-          {{ message }}
+      <div class="uk-alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}" uk-alert>
+          <p>{{ message }}</p>
           <a class="uk-alert-close" uk-close></a>
       </div>
       {% endfor %}
