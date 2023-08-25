@@ -3,6 +3,7 @@ from django.db.models.deletion import ProtectedError
 from django.contrib import messages
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 
 from django_filters.views import FilterView as OriginalFilterView
 import django_filters
@@ -55,6 +56,34 @@ class DeleteView(generic.DeleteView):
             msg = f"Cannot delete {self.model.__name__}. There is protected information attached."
             messages.error(request, msg)
             return HttpResponseRedirect(self.get_failed_url())
+
+
+class Select2ListView(ListView):
+    def get_ajax_queryset(self, id):
+        return self.model.objects.filter(client__id=id)
+
+    def render_to_json_response(self, request, id, **response_kwargs):
+        """
+        Returns a JSON response, transforming the queryset to make the payload.
+        """
+        qs = self.get_queryset(id=id)
+        
+        return JsonResponse(
+            {
+                "results": [
+                    {"text": obj.__str__(), "id": obj.pk}
+                    for obj in qs
+                ],
+                "more": False,
+            },
+        )
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return self.render_to_json_response(request, kwargs['pk'])
+        else:
+            return response
 
 
 

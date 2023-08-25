@@ -1,6 +1,11 @@
 {% extends 'base_form.html' %}
+{% load static %}
 
 {% block important_header_scripts %}
+<link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.css"
+  integrity="sha256-cxYyFTq8AlfZjXRMeAy8KPHpmNVSpUNhnxQwNfUT0Lo="
+  crossorigin="anonymous" />
     {{ form.media.css }}
         <style>
         input, select {width: 100%}
@@ -24,4 +29,13 @@
     </button>
 </form>
 {{ form.media.js }}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"
+  integrity="sha256-GHC3xFbrevQ0aRcWg5JElUOncXYXxTtMOuA74cWAPTw="
+  crossorigin="anonymous">
+</script>
+
+<script
+  src="{% static 'django_select2/django_select2.js' %}">
+</script>
 {% endblock %}
