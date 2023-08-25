@@ -1,4 +1,8 @@
 from django.views import generic
+from django.db.models.deletion import ProtectedError
+from django.contrib import messages
+from django.shortcuts import HttpResponseRedirect
+from django.urls import reverse_lazy
 
 
 class ListView(generic.ListView):
@@ -29,7 +33,23 @@ class UpdateView(generic.UpdateView):
 
 
 class DeleteView(generic.DeleteView):
-    pass
+    """
+    Expects a reverse string for the reverse_lazy which assumes that the kwargs require a pk
+    """
+    model_detail_reverse_string = ''
+
+    def get_failed_url(self, *args, **kwargs):
+        obj = self.get_object()
+        return reverse_lazy(self.model_detail_reverse_string, kwargs={'pk': obj.pk})
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            msg = f"Cannot delete {self.model.__name__}. There is protected information attached."
+            messages.error(request, msg)
+            return HttpResponseRedirect(self.get_failed_url())
+
 
 
 class DefaultsPrepopulateFilterSetMixin:
