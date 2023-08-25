@@ -3,28 +3,28 @@
 {% load titleify_tags %}
 
 {% block content %}
-<h1 class='uk-h1'>{% block content_title %}{% endblock %}</h1>
+	<h1 class='uk-h1'>{% block content_title %}{% endblock %}</h1>
 
-{% block detail %}
-	{% if fields %}
-	<dl class="uk-description-list">
-		{% for f in fields %}
-	    <dt>{{ f|titleify }}</dt>
-	    <dd>{{ object|getattr:f|default:' - ' }}</dd>
-		{% endfor %}
-	</dl>
-	{% else %}
-	<p>No fields declared</p>
-	{% endif %}
-{% endblock %}
+	{% block detail %}
+		{% if fields %}
+		<dl class="uk-description-list">
+			{% for f in fields %}
+		    <dt>{{ f|titleify }}</dt>
+		    <dd>{{ object|getattr:f|default:' - ' }}</dd>
+			{% endfor %}
+		</dl>
+		{% else %}
+		<p>No fields declared</p>
+		{% endif %}
+	{% endblock %}
 
-{% block extra_detail %}
-{% endblock %}
+	{% block extra_detail %}
+	{% endblock %}
 
-{% block defaultlinks %}
-<a href="{% block update_link %}{% endblock %}" class='uk-button uk-button-primary'>Update</a>
-<a href="{% block delete_link %}{% endblock %}" class='uk-button uk-button-danger'>Delete</a>
-<br>
-<a href="{% block back_link %}{% endblock %}" class='uk-button uk-button-text'>Back to listing</a>
-{% endblock %}
+	{% block defaultlinks %}
+	<a href="{% block update_link %}{% endblock %}" class='uk-button uk-button-primary'>Update</a>
+	<a href="{% block delete_link %}{% endblock %}" class='uk-button uk-button-danger'>Delete</a>
+	<br>
+	<a href="{% block back_link %}{% endblock %}" class='uk-button uk-button-text'>Back to listing</a>
+	{% endblock %}
 {% endblock %}

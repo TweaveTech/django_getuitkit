@@ -4,8 +4,14 @@ from django.contrib import messages
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
 
+from django_filters.views import FilterView as OriginalFilterView
+import django_filters
 
 class ListView(generic.ListView):
+    paginate_by = 50
+
+
+class FilterView(OriginalFilterView):
     paginate_by = 50
 
 
