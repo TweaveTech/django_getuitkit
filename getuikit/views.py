@@ -1,4 +1,5 @@
 from django.views import generic
+from django.views.generic import View
 from django.db.models.deletion import ProtectedError
 from django.contrib import messages
 from django.shortcuts import HttpResponseRedirect
